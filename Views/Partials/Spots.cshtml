@@ -1,0 +1,20 @@
+﻿@using Umbraco.Cms.Core.Models.Blocks;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
+
+
+<section class="side-kick d-flex justify-content-center align-items-center d-none d-lg-block">
+    <div class="d-flex justify-content-center align-items-center">
+        @foreach (var spot in Model.Value<IEnumerable<BlockListItem>>("spots"))
+        {
+            var spotImage = spot.Content.Value<IPublishedContent>("spotImage");
+
+            <a href="@spot.Content.Value("url")" class="text-decoration-none text-reset">
+                <div class="pictures-with-text mx-5">
+                    <img src="@spotImage?.Url()" alt="" class="img-fluid" style="max-width: 100%; max-height: 400px;" />
+                    <h1 class="picture-text">@spot.Content.Value("heading")</h1>
+                </div>
+            </a>
+        }
+    </div>
+</section>
+

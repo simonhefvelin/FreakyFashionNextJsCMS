@@ -1,0 +1,34 @@
+﻿@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
+
+@{ 
+    var products = Model.Root().Descendants<ContentModels.ProductDetailsPage>();
+}
+
+<section class="popular-product container">
+    <h1 class="p1">Populära produkter</h1>
+    <div class="row">
+        @foreach (var product in products)
+        {
+            <div class="col-lg-3 col-md-4 col-sm-6 col-12">
+                <a href="@product.Url()" class="text-decoration-none text-reset">
+                    <article class="product-card">
+                        <img src="@product.ProductImage?.Url()" alt="" class="img-fluid" />
+                        <svg xmlns="http://www.w3.org/2000/svg"
+                             width="50"
+                             height="50"
+                             fill="currentColor"
+                             class="label"
+                             viewBox="0 0 16 16">
+                            <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z" />
+                        </svg>
+                        <div class="popular-products-text">
+                            <h2>@product.ProductName</h2>
+                            @product.ProductPrice kr
+                        </div>
+                    </article>
+                </a>
+            </div>
+        }
+    </div>
+</section>

@@ -1,0 +1,307 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/*INDEX PAGE*/
+
+/* HEADER */
+
+.header-section {
+  padding: 1rem;
+}
+
+.header-section img {
+  padding-bottom: 0.3em;
+}
+
+.site-header {
+  display: flex;
+  flex-direction: column;
+}
+
+.search-field input {
+  width: 100%;
+  padding: 0 1rem;
+  border-radius: 1em;
+}
+
+.menu {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  list-style: none;
+  padding-top: 0.5em;
+}
+
+/* MAIN */
+
+.hero {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    border: 1px solid black;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.hero img {
+  padding: 0.5em;
+}
+.hero-text /*.buy-button*/ {
+  width: 75%;
+  margin-bottom: 1em;
+  height: 3em;
+}
+
+.buy-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #808080;
+    color: #fff;
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.hero p {
+  margin: 1em;
+}
+
+/* SIDE-KICK */
+
+.side-kick {
+  display: flex;
+  flex-direction: row;
+  gap: 1em;
+  display: none;
+}
+
+.pictures-with-text {
+  position: relative;
+  margin: 1em;
+}
+
+.picture-text {
+  position: absolute;
+  top: 40%;
+  left: 25%;
+  font-size: 2.5em;
+}
+
+/* SECTION */
+
+.p1 {
+  text-align: center;
+  margin-bottom: 0.5em;
+}
+
+.product-card img {
+  position: relative;
+  width: 100%;
+  padding: 0.5em;
+}
+
+.product-card {
+  position: relative;
+}
+
+.popular-products-text {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5em;
+  font-size: 1em;
+}
+
+.popular-products-text h2 {
+  font-size: 1em;
+}
+
+.label {
+  position: absolute;
+  bottom: 4rem;
+  right: 1rem;
+  font-size: 1em;
+}
+
+/* FOOTER */
+
+.footer-icons-text {
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  gap: 1em;
+  padding-left: 0.8em;
+  padding-top: 1em;
+  padding-bottom: 2em;
+}
+
+.accordion-list {
+  display: none;
+}
+
+.copywright-symbol {
+  display: flex;
+  justify-content: center;
+  padding-top: 1em;
+}
+
+.order {
+  width: 100%;
+}
+
+/* PRODUCT-DETAILS PAGE */
+
+/*MAIN*/
+
+.product-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+
+
+
+@media (min-width: 576px) {
+  /* INDEX PAGE */
+
+  /* HEADER */
+
+  .site-header,
+  .navigation-menu .menu {
+    flex-direction: row;
+  }
+
+  .menu {
+    gap: 3.5em;
+  }
+
+  .search-field {
+    padding-top: 3em;
+    padding-left: 1em;
+  }
+
+  /* POPULAR PRODUCTS */
+
+  .popular-products {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    max-width: 120rem;
+    margin: 0 auto;
+  }
+
+    .product-container {
+        flex-direction: row;
+        margin: 0 auto;
+    }
+
+  .product-container button {
+    margin: 0;
+  }
+ 
+
+  .product-container > * {
+    flex: 1 !important;
+  }
+  /* FOOTER*/
+
+  .accordion {
+    display: none;
+    gap: 2em;
+    padding-top: 4em;
+  }
+
+  .accordion-list {
+    display: flex;
+    gap: 2em;
+  }
+
+  .footer-icons-text {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 60rem;
+    margin: 0 auto 4.8rem auto;
+    padding-left: 4em;
+    padding-top: 4em;
+    gap: 3em;
+  }
+
+  .copywright-symbol {
+    padding-top: 3em;
+  }
+
+  
+}
+
+@media (min-width: 1200px) {
+  /*INDEX PAGE*/
+
+  /* HERO */
+    .hero {
+        max-width: 1200px;
+        margin: 0 auto;
+        flex-direction: row-reverse;
+    }
+
+    .hero-text {
+        padding-left: 2em;
+        align-self: center;
+    }
+
+  /* POPULAR PRODUCTS */
+
+  .popular-products {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    max-width: 120rem;
+    margin: 0 auto;
+  }
+
+  /* FOOTER */
+
+  /* SIDEKICK */
+
+  .side-kick {
+    position: static;
+    display: flex;
+    gap: 1em;
+    max-width: 1200px;
+    margin: 1em auto;
+  }
+
+
+  /* FOOTER */
+
+  .footer-icons-text {
+    grid-template-columns: repeat(4, 1fr);
+    justify-items: center;
+    
+  }
+
+  
+}

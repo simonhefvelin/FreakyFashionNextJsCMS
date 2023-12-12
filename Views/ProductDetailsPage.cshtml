@@ -1,0 +1,27 @@
+﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<ContentModels.ProductDetailsPage>
+@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+@{
+    Layout = "Master.cshtml";
+
+    var productImage = Model.Value<IPublishedContent>("productImage");
+}
+
+    
+<div class="product-container ">
+    <div>
+        <img src="@Model.ProductImage?.Url()" alt="" />
+    </div>
+
+    <div class="product-text">
+        <h1>@Model.ProductName</h1>
+        <p>
+            @Model.ProductInfo
+        </p>
+        @Model.ProductPrice kr
+        <a href="#" class="buy-button">Lägg i Varukorg</a>
+    </div>
+</div>
+
+
+

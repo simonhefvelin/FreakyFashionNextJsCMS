@@ -1,0 +1,53 @@
+﻿@using Examine;
+@using Umbraco.Cms.Core;
+@using Umbraco.Cms.Infrastructure.Examine;
+@using Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<ContentModels.SearchResultPage>
+@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+@inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
+@inject IPublishedContentQuery publishedContentQuery
+@inject IExamineManager examineManager
+
+
+@{
+    Layout = "Master.cshtml";
+
+    if (!examineManager.TryGetIndex(Constants.UmbracoIndexes.ExternalIndexName, out IIndex index))
+    {
+
+    }
+    var searchQuery = HttpContextAccessor.HttpContext.Request.Query["q"];
+    var query = index.Searcher.CreateQuery(IndexTypes.Content);
+    var queryExecutor = query.NodeTypeAlias("productDetailsPage").And().ManagedQuery(searchQuery);	
+    var searchResults = publishedContentQuery.Search(queryExecutor);
+    
+}
+
+<div class="search-result text-center">
+    <h1>@searchResults.Count() träffar på "@searchQuery"</h1>
+
+    <div class="row">
+        @foreach (var searchResult in searchResults)
+        {
+            
+            var productImage = searchResult.Content.Value<IPublishedContent>("productImage")?.Url();
+            var productUrl = searchResult.Content.Url();
+
+
+            <a href="@productUrl" class="text-decoration-none text-reset">
+                <div class="col-12">
+                    <div class="d-flex mb-3">
+                        <div class="col-4 ml-3">
+                            <img src="@productImage" alt="" class="img-fluid" />
+                        </div>
+                        <div class="col-8 d-flex flex-column justify-content-center">
+                            <h1 class="title">@searchResult.Content.Name</h1>
+                            <span class="product-description">@searchResult.Content.Value("productInfo")</span>
+                            <span class="product-price">@searchResult.Content.Value("productPrice") SEK</span>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        }
+    </div>
+</div>
